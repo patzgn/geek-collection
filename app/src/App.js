@@ -1,5 +1,6 @@
 import Header from './Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Hero from './Hero';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header auth={auth} />
+      <Hero auth={auth} />
     </ThemeProvider>
   );
 }
