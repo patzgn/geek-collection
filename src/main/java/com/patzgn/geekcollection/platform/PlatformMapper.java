@@ -1,8 +1,11 @@
 package com.patzgn.geekcollection.platform;
 
-class PlatformDtoMapper {
+import org.springframework.stereotype.Service;
 
-    static PlatformDto toDto(Platform platform) {
+@Service
+class PlatformMapper {
+
+    PlatformDto toDto(Platform platform) {
         return new PlatformDto(
                 platform.getId(),
                 platform.getName(),

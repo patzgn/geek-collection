@@ -1,8 +1,11 @@
 package com.patzgn.geekcollection.genre;
 
-class GenreDtoMapper {
+import org.springframework.stereotype.Service;
 
-    static GenreDto toDto(Genre genre) {
+@Service
+class GenreMapper {
+
+    GenreDto toDto(Genre genre) {
         return new GenreDto(
                 genre.getId(),
                 genre.getName(),

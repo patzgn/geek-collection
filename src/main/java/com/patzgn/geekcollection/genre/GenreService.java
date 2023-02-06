@@ -3,16 +3,18 @@ package com.patzgn.geekcollection.genre;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 class GenreService {
 
     private final GenreRepository genreRepository;
+    private final GenreMapper genreMapper;
 
-    GenreDto findGenreByName(String name) {
+    Optional<GenreDto> findGenreByName(String name) {
         return genreRepository.findByNameIgnoreCase(name)
-                .map(GenreDtoMapper::toDto)
-                .orElseThrow();
+                .map(genreMapper::toDto);
     }
 
 }

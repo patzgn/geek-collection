@@ -3,16 +3,18 @@ package com.patzgn.geekcollection.platform;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 class PlatformService {
 
     private final PlatformRepository platformRepository;
+    private final PlatformMapper platformMapper;
 
-    PlatformDto findPlatformByName(String name) {
+    Optional<PlatformDto> findPlatformByName(String name) {
         return platformRepository.findByNameIgnoreCase(name)
-                .map(PlatformDtoMapper::toDto)
-                .orElseThrow();
+                .map(platformMapper::toDto);
     }
 
 }
