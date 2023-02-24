@@ -3,10 +3,7 @@ package com.patzgn.geekcollection.game;
 import com.patzgn.geekcollection.game.dto.GameDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +15,9 @@ public class GameController {
     private final GameService gameService;
 
     @GetMapping
-    List<GameDto> findAllGames() {
-        return gameService.findAllGames();
+    List<GameDto> findAllGames(@RequestParam(required = false) String genre, @RequestParam(required = false) String platform) {
+        GameSearchParameters params = new GameSearchParameters(genre, platform);
+        return gameService.findAllGames(params);
     }
 
     @GetMapping("/{id}")

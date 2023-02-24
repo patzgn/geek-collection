@@ -15,8 +15,9 @@ class GameService {
     private final GameRepository gameRepository;
     private final GameMapper gameMapper;
 
-    List<GameDto> findAllGames() {
-        return gameRepository.findAll()
+    List<GameDto> findAllGames(GameSearchParameters params) {
+        GameSearchParametersSpecification specification = new GameSearchParametersSpecification(params);
+        return gameRepository.findAll(specification)
                 .stream()
                 .map(gameMapper::toDto)
                 .collect(Collectors.toList());
