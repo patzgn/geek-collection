@@ -26,4 +26,10 @@ class GenreService {
                 .map(genreMapper::toDto);
     }
 
+    GenreDto addGenre(GenreDto genre) {
+        Genre genreEntity = genreMapper.toEntity(genre);
+        Genre savedGenre = genreRepository.save(genreEntity);
+        return genreMapper.toDto(savedGenre);
+    }
+
 }

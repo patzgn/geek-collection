@@ -13,4 +13,12 @@ class GenreMapper {
         );
     }
 
+    Genre toEntity(GenreDto genre) {
+        return new Genre(
+                genre.getId(),
+                genre.getName(),
+                genre.getDescription()
+        );
+    }
+
 }
