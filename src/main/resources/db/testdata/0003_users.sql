@@ -1,5 +1,5 @@
-insert into users (email, password) values ('laizkovitch0@is.gd', 'wA8JPik');
-insert into users (email, password) values ('zdedenham1@msu.edu', '5Zso7nE');
-insert into users (email, password) values ('ddmitrovic2@cpanel.net', 'TXXTfMUVXw');
-insert into users (email, password) values ('cwhitney3@cmu.edu', 'rSn6PXSgbf');
-insert into users (email, password) values ('ddemko4@netvibes.com', 'dgDYcAjby');
+insert into users (email, password, role) values ('ccheeld0@surveymonkey.com', 'gaRDTKg3', 'USER');
+insert into users (email, password, role) values ('vbrasner1@utexas.edu', 'vTBzjz', 'USER');
+insert into users (email, password, role) values ('cfoucar2@wired.com', 'qnzOgs', 'USER');
+insert into users (email, password, role) values ('wgiordano3@feedburner.com', 'TVWtLk2mAkRN', 'USER');
+insert into users (email, password, role) values ('ehauxby4@thetimes.co.uk', 'i9CPI45Nnw2U', 'USER');
