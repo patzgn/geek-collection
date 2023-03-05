@@ -4,13 +4,15 @@ import com.patzgn.geekcollection.genre.Genre;
 import com.patzgn.geekcollection.platform.Platform;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-@Data
 @Entity
-class Game {
+@Data
+@NoArgsConstructor
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
