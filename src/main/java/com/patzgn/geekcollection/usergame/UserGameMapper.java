@@ -11,6 +11,7 @@ class UserGameMapper {
                 .id(game.getId())
                 .user(game.getUser().getUsername())
                 .gameTitle(game.getGame().getTitle())
+                .status(game.getStatus().name())
                 .build();
     }
 

@@ -21,12 +21,13 @@ class UserGame {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "game_id", referencedColumnName = "id")
-    @Column(nullable = false)
     private Game game;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 }
