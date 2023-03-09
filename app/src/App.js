@@ -1,6 +1,6 @@
-import Header from './Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Hero from './Hero';
+import Header from './components/Header';
+import Hero from './components/Hero';
 
 const theme = createTheme({
   palette: {
