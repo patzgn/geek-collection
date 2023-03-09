@@ -32,7 +32,7 @@ export default function Header({ auth }) {
             position="relative"
             sx={{ backgroundColor: 'white' }}
         >
-            <Container maxWidth="lg">
+            <Container>
                 <Toolbar disableGutters>
 
                     <Typography
