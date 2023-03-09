@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Header from './components/Header';
 import Hero from './components/Hero';
+import GameStack from './components/GameStack'
 
 const theme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header auth={auth} />
       <Hero auth={auth} />
+      <GameStack />
     </ThemeProvider>
   );
 }
