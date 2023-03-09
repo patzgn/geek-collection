@@ -14,7 +14,6 @@ export default function GameStack() {
             sx={{ display: 'flex', overflow: 'hidden' }}
         >
             <Container
-                maxWidth="lg"
                 sx={{ mt: 10, mb: 10 }}
             >
                 <Grid container spacing={2}>

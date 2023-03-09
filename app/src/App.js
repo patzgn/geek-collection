@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Header from './components/Header';
 import Hero from './components/Hero';
 import GameStack from './components/GameStack'
+import Footer from './components/Footer';
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ function App() {
       <Header auth={auth} />
       <Hero auth={auth} />
       <GameStack />
+      <Footer />
     </ThemeProvider>
   );
 }
