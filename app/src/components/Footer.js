@@ -12,7 +12,12 @@ export default function Footer() {
     return (
         <Box
             component='footer'
-            sx={{ display: 'flex', overflow: 'hidden', bgcolor: `${theme.palette.primary.dark}` }}
+            sx={{
+                display: 'flex',
+                overflow: 'hidden',
+                marginTop: 'auto',
+                bgcolor: `${theme.palette.primary.dark}`
+            }}
         >
             <Container sx={{ my: 8, display: 'flex', justifyContent: 'center' }}>
                 <Typography

@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Header from './components/Header';
 import Hero from './components/Hero';
+import GameList from './components/GameList';
 import GameStack from './components/GameStack'
 import Footer from './components/Footer';
 
@@ -21,8 +22,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header auth={auth} />
-      <Hero auth={auth} />
-      <GameStack />
+      {/* <Hero auth={auth} />
+      <GameStack /> */}
+      <GameList />
       <Footer />
     </ThemeProvider>
   );
