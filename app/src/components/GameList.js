@@ -1,63 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import Box from '@mui/material/Box';
-import { Avatar, IconButton, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
-import games from '../fake_data/games'
-import { Container } from '@mui/system';
+import List from '@mui/material/List'
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-function GameItem({ game }) {
+import GameListItem from './GameListItem';
+import { getGames } from '../services/games';
+import { ErrorAlert } from '../services/notification';
+
+export default function GameList(props) {
+
+  const { params } = props;
+  const [count, setCount] = useState(0);
+
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [err, setError] = useState("");
+
+
+  const [page, setPage] = useState(1);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  }
+
+  const fetchGames = (params) => {
+    setLoading(true);
+    getGames(params).then(res => {
+      console.log('fetching')
+      setGames(res.data.content)
+      setCount(res.data.totalPages)
+    }).catch(err => {
+      setError(err.response.data.message)
+    }).finally(() => {
+      setLoading(false)
+    })
+  }
+
+  useEffect(() => {
+    fetchGames({
+      'page': page - 1,
+      'title': params.title,
+    });
+  }, [params, page])
+
+
+  if (loading) {
     return (
-        <ListItem
-            alignItems='flex-start'
-        >
-            <ListItemButton>
-                <ListItemAvatar>
-                    <Avatar
-                        src={`../images/${game.poster}`}
-                        variant='rounded'
-                    />
-                </ListItemAvatar>
-                <ListItemText
-                    primary={`${game.title} (${game.platforms.map(i => `${i}`).join(', ')})`}
-                    secondary={game.shortDescription}
-                />
-            </ListItemButton>
-
-        </ListItem>
-
+      <CircularProgress />
     )
-}
+  }
 
-export default function GameList() {
+  if (err) {
     return (
-        <Box
-            component='section'
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                overflow: 'hidden',
-                paddingY: 10
-            }}
-        >
-            <Container maxWidth='md'>
-                <List>
-                    {games.map((game, i) => (
-                        <React.Fragment>
-                            <GameItem key={game.id} game={game} />
-                            <Divider variant='inset' component='li' />
-                        </React.Fragment>
-                    ))}
-                </List>
+      <ErrorAlert />
+    )
+  }
 
-                <Stack spacing={2} alignItems='center' >
-                    <Pagination count={10} shape='rounded' />
-                </Stack>
+  return (
+    <>
+      <List>
+        {games.map((game) => (
+          <React.Fragment key={game.id}>
+            <GameListItem game={game} />
+            <Divider variant='inset' component='li' />
+          </React.Fragment>
+        ))}
+      </List>
 
-            </Container>
-        </Box>
-    );
+      <Stack spacing={2} alignItems='center' >
+        <Pagination count={count} page={page} onChange={handleChange} shape='rounded' />
+      </Stack>
+    </>
+  );
+
 }

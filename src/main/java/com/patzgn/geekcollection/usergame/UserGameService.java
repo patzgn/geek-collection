@@ -15,7 +15,7 @@ class UserGameService {
     private final UserGameMapper userGameMapper;
 
     public List<UserGameDto> findAllUserGamesByUser(String username) {
-        return userGameRepository.findAllByUser_Username(username)
+        return userGameRepository.findAllByUser_Email(username)
                 .stream()
                 .map(userGameMapper::toDto)
                 .collect(Collectors.toList());

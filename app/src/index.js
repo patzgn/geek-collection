@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import '@fontsource/roboto/400.css';
 import "@fontsource/audiowide"
-
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );

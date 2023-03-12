@@ -1,9 +1,11 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Header from './components/Header';
-import Hero from './components/Hero';
-import GameList from './components/GameList';
-import GameStack from './components/GameStack'
+
+import { Route, Routes } from 'react-router-dom';
+
 import Footer from './components/Footer';
+import Header from './components/Header';
+import Games from './pages/Games';
+import Home from './pages/Home';
 
 const theme = createTheme({
   palette: {
@@ -22,9 +24,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Header auth={auth} />
-      {/* <Hero auth={auth} />
-      <GameStack /> */}
-      <GameList />
+
+      <Routes>
+        <Route path='/' element={<Home auth={auth} />} />
+        <Route path='games' element={<Games />} />
+      </Routes>
+
       <Footer />
     </ThemeProvider>
   );

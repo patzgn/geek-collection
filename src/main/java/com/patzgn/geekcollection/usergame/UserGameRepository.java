@@ -6,6 +6,6 @@ import java.util.List;
 
 interface UserGameRepository extends JpaRepository<UserGame, Long> {
 
-    List<UserGame> findAllByUser_Username(String username);
+    List<UserGame> findAllByUser_Email(String email);
 
 }

@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 class GameSearchParameters {
 
+    private String title;
     private String genre;
     private String platform;
 
