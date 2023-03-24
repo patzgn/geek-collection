@@ -15,7 +15,7 @@ export default function GameCard({ game }) {
         <CardActionArea component='a' href={`/games/${game.id}`} sx={{ height: '100%' }}>
           <CardMedia
             component='img'
-            height='240'
+            height='300'
             image={`./images/${game.poster}`}
             alt={game.title}
           />
