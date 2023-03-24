@@ -1,5 +1,6 @@
 package com.patzgn.geekcollection.genre;
 
+import com.patzgn.geekcollection.genre.dto.GenreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

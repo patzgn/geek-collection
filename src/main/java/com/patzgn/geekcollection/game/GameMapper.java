@@ -11,22 +11,22 @@ import java.util.stream.Collectors;
 class GameMapper {
 
     GameDto toDto(Game game) {
-        return new GameDto(
-                game.getId(),
-                game.getTitle(),
-                game.getGenres()
+        return GameDto.builder()
+                .id(game.getId())
+                .title(game.getTitle())
+                .genres(game.getGenres()
                         .stream()
                         .map(Genre::getName)
-                        .collect(Collectors.toList()),
-                game.getPlatforms()
+                        .collect(Collectors.toList()))
+                .platforms(game.getPlatforms()
                         .stream()
                         .map(Platform::getName)
-                        .collect(Collectors.toList()),
-                game.getShortDescription(),
-                game.getDescription(),
-                game.getReleaseDate(),
-                game.getPoster()
-        );
+                        .collect(Collectors.toList()))
+                .shortDescription(game.getShortDescription())
+                .description(game.getDescription())
+                .releaseDate(game.getReleaseDate())
+                .poster(game.getPoster())
+                .build();
     }
 
 }

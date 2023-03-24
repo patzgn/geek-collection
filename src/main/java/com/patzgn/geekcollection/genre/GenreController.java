@@ -1,5 +1,6 @@
 package com.patzgn.geekcollection.genre;
 
+import com.patzgn.geekcollection.genre.dto.GenreDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class GenreController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedGenre.getId())
+                .buildAndExpand(savedGenre.id())
                 .toUri();
         return ResponseEntity.created(location).body(savedGenre);
     }

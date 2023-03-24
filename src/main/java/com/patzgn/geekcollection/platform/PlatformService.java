@@ -1,5 +1,6 @@
 package com.patzgn.geekcollection.platform;
 
+import com.patzgn.geekcollection.platform.dto.PlatformDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
