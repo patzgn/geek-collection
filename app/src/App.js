@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
+import GamePage from './pages/GamePage';
 import Games from './pages/Games';
 import Home from './pages/Home';
 
@@ -19,7 +20,7 @@ const theme = createTheme({
 
 function App() {
 
-  const auth = true;
+  const auth = false;
 
   return (
     <ThemeProvider theme={theme}>
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home auth={auth} />} />
         <Route path='games' element={<Games />} />
+        <Route path='games/:id' element={<GamePage auth={auth} />} />
       </Routes>
 
       <Footer />

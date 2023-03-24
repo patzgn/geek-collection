@@ -10,7 +10,7 @@ export default function GameListItem({ game }) {
 
   return (
     <ListItem>
-      <ListItemButton alignItems='flex-start'>
+      <ListItemButton alignItems='flex-start' component="a" href={`/games/${game.id}`}>
         <ListItemAvatar sx={{ width: 120 }}>
           <Avatar
             alt={game.title}

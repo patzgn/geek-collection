@@ -8,8 +8,6 @@ import Typography from '@mui/material/Typography';
 
 export default function Hero({ auth }) {
 
-  console.log('hero')
-
   const headerText = 'GeekCollection';
   const primaryText = 'Track your geek collection';
   const secondaryText = <>

@@ -7,6 +7,16 @@ const getAuthConfig = () => ({
     }
 })
 
+export const getGameById = async (id) => {
+    try {
+        return await http.get(
+            '/games/' + id
+        )
+    } catch (e) {
+        throw e;
+    }
+}
+
 export const getGames = async (params) => {
     try {
         return await http.get(
