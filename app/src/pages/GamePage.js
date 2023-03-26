@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography"
 
 import { getGameById } from "../services/games";
 import { ErrorAlert } from "../services/notification";
+import GameDetails from "../components/GameDetails";
 
 export default function GamePage({ auth }) {
 
@@ -26,7 +27,7 @@ export default function GamePage({ auth }) {
     getGameById(id).then(res => {
       setGame(res.data)
     }).catch(err => {
-      setError(err.response.data.message)
+      setError(err.message)
     }).finally(() => {
       setLoading(false)
     })
@@ -40,81 +41,28 @@ export default function GamePage({ auth }) {
 
   if (loading) {
     return (
-      <CircularProgress />
+      <Container sx={{ mt: 10, mb: 10 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      </Container>
     )
   }
 
   if (err) {
     return (
-      <ErrorAlert />
+      <Container sx={{ mt: 10, mb: 10 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <ErrorAlert />
+        </Box>
+      </Container>
     )
   }
 
   return (
     <>
       <Container sx={{ mt: 10, mb: 10 }}>
-        <Grid container spacing={2}>
-
-          <Grid item xs={12}>
-            <Typography
-              component='h1'
-              variant='h4'
-              color='text.primary'
-              fontWeight={600}
-              align="center"
-            >
-              {game.title}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={2} >
-            <Paper sx={{ minWidth: '100%' }}>
-              <Avatar
-                alt={game.title}
-                src={`../images/${game.poster}`}
-                variant='rounded'
-                sx={{ width: '100%', height: 'auto' }}
-              />
-            </Paper>
-          </Grid>
-
-          <Grid item xs={10} >
-            <Paper sx={{ minHeight: '100%' }}>
-              <Typography variant='body1' sx={{ p: 2 }} >
-                {game.description}
-              </Typography>
-
-              <Typography variant='body2' sx={{ px: 2 }}>
-                <ul style={{ listStyleType: 'none', padding: 0 }}>
-                  <li>Release date: {game.releaseDate}</li>
-                  <li>Platform: {game.platforms}</li>
-                  <li>Genre: {game.genres}</li>
-                </ul>
-              </Typography>
-
-              {!auth && (
-                <>
-                  <Typography variant='body1' align="right" sx={{ p: 2 }} >
-                    Want to add this game to your list?
-                  </Typography>
-                  <Box display="flex" justifyContent="flex-end" mx={2} mb={2}>
-
-                    <Button
-                      variant='contained'
-                      size='medium'
-                      align='right'
-                    >
-                      Sign In
-                    </Button>
-
-                  </Box>
-                </>
-              )}
-
-            </Paper>
-          </Grid>
-
-        </Grid>
+        <GameDetails game={game} auth={auth} />
       </Container>
     </>
   );

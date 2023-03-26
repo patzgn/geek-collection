@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List'
@@ -33,7 +34,7 @@ export default function GameList(props) {
       setGames(res.data.content)
       setCount(res.data.totalPages)
     }).catch(err => {
-      setError(err.response.data.message)
+      setError(err.message)
     }).finally(() => {
       setLoading(false)
     })
@@ -49,13 +50,17 @@ export default function GameList(props) {
 
   if (loading) {
     return (
-      <CircularProgress />
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
+        <CircularProgress />
+      </Box>
     )
   }
 
   if (err) {
     return (
-      <ErrorAlert />
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
+        <ErrorAlert />
+      </Box>
     )
   }
 

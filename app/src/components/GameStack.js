@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 
 import GameCard from './GameCard';
@@ -21,7 +20,7 @@ export default function GameStack() {
     getRecentlyGames().then(res => {
       setGames(res.data.content)
     }).catch(err => {
-      setError(err.response.data.message)
+      setError(err.message)
     }).finally(() => {
       setLoading(false)
     })
@@ -33,39 +32,24 @@ export default function GameStack() {
 
   if (loading) {
     return (
-      <Box
-        component='section'
-        sx={{ display: 'flex', overflow: 'hidden' }}
-      >
-        <Container sx={{ mt: 10, mb: 10 }}>
-          <CircularProgress />
-        </Container>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <CircularProgress />
       </Box>
     )
   }
 
   if (err) {
     return (
-      <Box
-        component='section'
-        sx={{ display: 'flex', overflow: 'hidden', justifyContent: 'center', mt: 10, mb: 10 }}
-      >
-        <ErrorAlert message={err} />
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <ErrorAlert />
       </Box>
     )
   }
 
   return (
-    <Box
-      component='section'
-      sx={{ display: 'flex', overflow: 'hidden' }}
-    >
-      <Container sx={{ mt: 10, mb: 10 }}>
-        <Grid container spacing={2}>
-          {games.map(game => <GameCard key={game.id} game={game} />)}
-        </Grid>
-      </Container>
-    </Box>
+    <Grid container spacing={2}>
+      {games.map(game => <GameCard key={game.id} game={game} />)}
+    </Grid>
   );
 
 }
