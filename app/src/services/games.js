@@ -1,12 +1,5 @@
 import http from "../http-common";
 
-const getAuthConfig = () => ({
-    headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Basic dXNlcjpwYXNz`
-    }
-})
-
 export const getGameById = async (id) => {
     try {
         return await http.get(

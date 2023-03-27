@@ -16,7 +16,9 @@ import { useTheme } from '@mui/material/styles';
 
 import { Link } from "react-router-dom"
 
-export default function Header({ auth }) {
+export default function Header(props) {
+
+  const { auth, username } = props;
 
   const pages = ['Games', 'About'];
   const settings = ['Profile'];
@@ -89,21 +91,21 @@ export default function Header({ auth }) {
                   </ListItemButton>
                 </ListItem>
               ))}
-              {auth && settings.map((setting) => (
-                <ListItem key={setting} onClick={handleCloseNavMenu} disablePadding>
+              {auth && (
+                <ListItem key='profile' onClick={handleCloseNavMenu} disablePadding>
                   <ListItemButton>
                     <Link
                       style={{
                         textDecoration: "none",
                         color: theme.palette.primary.dark,
                       }}
-                      to={`/${setting.toLowerCase()}`}
+                      to={`/users/${username}`}
                     >
-                      <ListItemText primary={setting} />
+                      <ListItemText primary='Profile' />
                     </Link>
                   </ListItemButton>
                 </ListItem>
-              ))}
+              )}
             </SwipeableDrawer>
           </Box>
 
@@ -143,9 +145,9 @@ export default function Header({ auth }) {
                 </Link>
               </Button>
             ))}
-            {auth && settings.map((setting) => (
+            {auth && (
               <Button
-                key={setting}
+                key='profile'
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, display: 'block' }}
               >
@@ -154,17 +156,18 @@ export default function Header({ auth }) {
                     textDecoration: "none",
                     color: theme.palette.primary.dark,
                   }}
-                  to={`/${setting.toLowerCase()}`}
+                  to={`/users/${username}`}
                 >
-                  {setting}
+                  Profile
                 </Link>
               </Button>
-            ))}
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             {!auth && (
               <Button
+                href='login'
                 variant='contained'
                 size='medium'
                 key='signIn'
@@ -175,6 +178,7 @@ export default function Header({ auth }) {
             )}
             {auth && (
               <Button
+                href='logout'
                 variant='outlined'
                 size='medium'
                 key='logOut'

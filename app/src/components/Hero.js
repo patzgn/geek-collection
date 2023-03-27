@@ -54,6 +54,7 @@ export default function Hero({ auth }) {
         >
           {!auth && (
             <Button
+              href='login'
               variant='contained'
               size='large'
               sx={{ ml: 4, fontSize: '20px' }}
@@ -70,7 +71,12 @@ export default function Hero({ auth }) {
               >
                 My Profile
               </Button>
-              <Button variant='outlined'>Log out</Button>
+              <Button
+                href='logout'
+                variant='outlined'
+              >
+                Log out
+              </Button>
             </>
           }
         </Stack>
